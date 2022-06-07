@@ -1,0 +1,18 @@
+RewriteEngine On
+Options All -Indexes
+
+ErrorDocument 404 /app-movil/resources/views/pages/404.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9/ñÑ-]+)$ index.php?vista=$1
+
+# Prevenir hotlinking
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://localhost/app-movil/.*$ [NC] [OR]
+RewriteCond %{HTTP_REFERER} !^http://localhost/app-movil/.*$ [NC] [OR]
+RewriteRule .*\.(gif|GIF|jpg|JPG|bmp|BMP|wav|mp3|wmv|avi|mpeg)$ - [F]
+
+# Especificar códificación de caracteres
+AddDefaultCharset utf-8
+
