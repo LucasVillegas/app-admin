@@ -1,0 +1,22 @@
+<?php
+
+//rutas de la web
+const SERVERURL = "http://app-admin.test/";
+
+/* Rutras de Configuracion */
+const SERVERASSETS = SERVERURL . "public/assets/";
+const SERVERVENDOR = SERVERURL . "vendor/";
+const SERVERCSS = SERVERURL . "resources/css/";
+const SERVERJS = SERVERURL . "resources/js/";
+const SERVERIMG = SERVERURL . "public/img/";
+
+/* Constante de configuracion de rutas y modelos */
+const SERVER_SCRIPT = SERVERURL . "public/js/";
+const SERVER_SCRIPT_LOGIN = SERVERURL . "public/js/login/";
+const SERVER_SCRIPT_CLIENTES = SERVERURL . "public/js/clientes/";
+const SERVER_SCRIPT_VENDEDORES = SERVERURL . "public/js/vendedores/";
+const SERVER_SCRIPT_CATEGORIA = SERVERURL . "public/js/categorias/";
+
+const COMPANY = "DISTRIBUIDORA J.A";
+
+date_default_timezone_set("America/Bogota");
