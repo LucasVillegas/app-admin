@@ -176,7 +176,8 @@ class ProductosControllers
             $sql = $this->conexion->ejecutar_consulta_simple("SELECT *, productos.id AS producto_id
             FROM productos  INNER JOIN unidades ON productos.unidad_id=unidades.id
             INNER JOIN categorias ON productos.categoria_id=categorias.id
-        WHERE productos.nombre_producto LIKE '%$search%' OR unidades.nombre_unidad LIKE '%$search' OR categorias.nombre_categoria LIKE '%$search'");
+        WHERE productos.nombre_producto LIKE '%$search%' 
+        OR clientes.nombre_cliente LIKE '%$search'");
             $resultado = $sql->fetchAll();
             $json = array();
             foreach ($resultado as $row) {
@@ -193,7 +194,6 @@ class ProductosControllers
                     'foto_producto' => $row['foto_producto'],
                     'unidad_id' => $row['unidad_id'],
                     'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
                     'fecha_creacion' => $row['fecha_creacion'],
                 );
             }
@@ -219,7 +219,6 @@ class ProductosControllers
                     'foto_producto' => $row['foto_producto'],
                     'unidad_id' => $row['unidad_id'],
                     'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
                     'fecha_creacion' => $row['fecha_creacion'],
                 );
             }

@@ -173,54 +173,46 @@ class ProductosControllers
 
         if ($this->helpers->limpiar_cadena(isset($_POST['dato'])) && $this->helpers->limpiar_cadena(!empty($_POST['dato']))) {
             $search = $this->helpers->limpiar_cadena($_POST['dato']);
-            $sql = $this->conexion->ejecutar_consulta_simple("SELECT *, productos.id AS producto_id
-            FROM productos  INNER JOIN unidades ON productos.unidad_id=unidades.id
-            INNER JOIN categorias ON productos.categoria_id=categorias.id
-        WHERE productos.nombre_producto LIKE '%$search%' OR unidades.nombre_unidad LIKE '%$search' OR categorias.nombre_categoria LIKE '%$search'");
+            $sql = $this->conexion->ejecutar_consulta_simple("SELECT *,clientes.id AS cliente_id FROM clientes
+        INNER JOIN rutas ON rutas.id=clientes.ruta_id
+        INNER JOIN vendedores ON vendedores.id=rutas.vendedor_id
+        WHERE clientes.nombre_tienda LIKE '%$search%' 
+        OR clientes.nombre_cliente LIKE '%$search'");
             $resultado = $sql->fetchAll();
             $json = array();
             foreach ($resultado as $row) {
                 $json[] = array(
-                    'producto_id' => $row['producto_id'],
-                    'codigo_producto' => $row['codigo_producto'],
-                    'nombre_producto' => $row['nombre_producto'],
-                    'cantidad' => $row['cantidad'],
-                    'precio_compra' => number_format($row['precio_compra']),
-                    'porcentaje' => $row['porcentaje'],
-                    'precio_porcentaje' => number_format($row['precio_porcentaje']),
-                    'precio' => number_format($row['precio']),
-                    'estado_producto' => $row['estado_producto'],
-                    'foto_producto' => $row['foto_producto'],
-                    'unidad_id' => $row['unidad_id'],
-                    'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
-                    'fecha_creacion' => $row['fecha_creacion'],
+                    'cliente_id' => $row['cliente_id'],
+                    'nit' => $row['nit'],
+                    'codigo_cliente' => $row['codigo_cliente'],
+                    'nombre_cliente' => $row['nombre_cliente'],
+                    'nombre_tienda' => $row['nombre_tienda'],
+                    'direccion_cliente' => $row['direccion_cliente'],
+                    'telefono_cliente' => $row['telefono_cliente'],
+                    'estado_cliente' => $row['estado_cliente'],
+                    'nombre_ruta' => $row['nombre_ruta'],
                 );
             }
             $jsonstring = json_encode($json);
             echo $jsonstring;
         } else {
-            $sql = $this->conexion->ejecutar_consulta_simple("SELECT *, productos.id AS producto_id
-            FROM productos  INNER JOIN unidades ON productos.unidad_id=unidades.id
-            INNER JOIN categorias ON productos.categoria_id=categorias.id LIMIT 15");
+            $sql = $this->conexion->ejecutar_consulta_simple("SELECT *,clientes.id AS cliente_id FROM clientes
+        INNER JOIN rutas ON rutas.id=clientes.ruta_id
+        INNER JOIN vendedores ON vendedores.id=rutas.vendedor_id
+         LIMIT 15");
             $resultado = $sql->fetchAll();
             $json = array();
             foreach ($resultado as $row) {
                 $json[] = array(
-                    'producto_id' => $row['producto_id'],
-                    'codigo_producto' => $row['codigo_producto'],
-                    'nombre_producto' => $row['nombre_producto'],
-                    'cantidad' => $row['cantidad'],
-                    'precio_compra' => number_format($row['precio_compra']),
-                    'porcentaje' => $row['porcentaje'],
-                    'precio_porcentaje' => number_format($row['precio_porcentaje']),
-                    'precio' => number_format($row['precio']),
-                    'estado_producto' => $row['estado_producto'],
-                    'foto_producto' => $row['foto_producto'],
-                    'unidad_id' => $row['unidad_id'],
-                    'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
-                    'fecha_creacion' => $row['fecha_creacion'],
+                    'cliente_id' => $row['cliente_id'],
+                    'nit' => $row['nit'],
+                    'codigo_cliente' => $row['codigo_cliente'],
+                    'nombre_cliente' => $row['nombre_cliente'],
+                    'nombre_tienda' => $row['nombre_tienda'],
+                    'direccion_cliente' => $row['direccion_cliente'],
+                    'telefono_cliente' => $row['telefono_cliente'],
+                    'estado_cliente' => $row['estado_cliente'],
+                    'nombre_ruta' => $row['nombre_ruta'],
                 );
             }
             $jsonstring = json_encode($json);

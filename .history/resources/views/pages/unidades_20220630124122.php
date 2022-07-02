@@ -2,7 +2,7 @@
     <h1 class="mb-2">Unidades</h1>
     <div class="row">
         <div class="col-10">
-            <div class="input-group mb-2">
+            <div class="input-group mb-5">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                 <input type="text" name="buscar" id="buscar" placeholder="Buscar Unidad" class="form-control"
                     autocomplete="off">
@@ -49,49 +49,53 @@
     </div> -->
 
     <div class="row">
-        <div class="col-10">
+        <div class="col-10 mt-2">
             <h6 class="nombre-unidad" style="font-size:13px;">nombre_unidad</h6>
             <h6 class="text-dark descripcion-unidad" style="font-size:12px;margin-top:-8px;">nombre_unidad</h6>
-            <span class="estado text-center">estado</span>
         </div>
-        <div class="col-2">
+        <!-- <div class="col-2">
             <div class="d-flex justify-content-end">
                 <div class="btn-group">
-                    <button class="btn btn-white btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="bi bi-three-dots-vertical"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <form class="form-edit">
-                            <button type="submit" class="dropdown-item btn text-warning btn-sm" class="btn-edit"><i
-                                    class="bi bi-pencil-square"></i> Editar
-                                <input type="hidden" class="id_unidad">
-                            </button>
-                        </form>
-                        <form id="form-bloq">
-                            <button type="submit" class="dropdown-item btn text-info btn-sm" class="btn-edit"><i
-                                    class="bi bi-slash-circle "></i> Bloquear
-                                <input type="hidden" class="id_unidad" id="id_edit">
-                            </button>
-                        </form>
-                        <form id="form-active">
-                            <button type="submit" class="dropdown-item btn text-success btn-sm" id="btn-active"><i
-                                    class="bi bi-arrow-counterclockwise"></i> Activar
-                                <input type="hidden" class="id_unidad" id="id_active">
-                            </button>
-                        </form>
-                        <form class="form-delete">
-                            <button type="submit" class="dropdown-item btn text-danger btn-sm" class="btn-edit"><i
-                                    class="bi bi-trash"></i> Eliminar
-                                <input type="hidden" class="id_unidad" id="id_delete">
-                            </button>
-                        </form>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                    <!-- dropup --> <button class="btn btn-white btn-sm dropdown-toggle" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu">
+            <form class="form-edit">
+                <button type="submit" class="dropdown-item btn text-warning btn-sm" class="btn-edit"><i
+                        class="bi bi-pencil-square"></i> Editar
+                    <input type="hidden" class="id_producto">
+                </button>
+            </form>
+            <form id="form-bloq">
+                <button type="submit" class="dropdown-item btn text-info btn-sm" class="btn-edit"><i
+                        class="bi bi-slash-circle "></i> Bloquear
+                    <input type="hidden" class="id_producto" id="id_edit">
+                </button>
+            </form>
+            <form id="form-active">
+                <button type="submit" class="dropdown-item btn text-success btn-sm" id="btn-active"><i
+                        class="bi bi-arrow-counterclockwise"></i> Activar
+                    <input type="hidden" class="id_producto" id="id_active">
+                </button>
+            </form>
+            <form class="form-delete">
+                <button type="submit" class="dropdown-item btn text-danger btn-sm" class="btn-edit"><i
+                        class="bi bi-trash"></i> Eliminar
+                    <input type="hidden" class="id_producto" id="id_delete">
+                </button>
+            </form>
+        </ul>
+    </div>
+    </div>
+    </div> -->
+
     </div>
     <hr class="my-1">
+
+
+
+
 </template>
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

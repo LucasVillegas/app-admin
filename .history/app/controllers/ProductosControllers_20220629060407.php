@@ -170,65 +170,7 @@ class ProductosControllers
 
     public function listar_productos()
     {
-
-        if ($this->helpers->limpiar_cadena(isset($_POST['dato'])) && $this->helpers->limpiar_cadena(!empty($_POST['dato']))) {
-            $search = $this->helpers->limpiar_cadena($_POST['dato']);
-            $sql = $this->conexion->ejecutar_consulta_simple("SELECT *, productos.id AS producto_id
-            FROM productos  INNER JOIN unidades ON productos.unidad_id=unidades.id
-            INNER JOIN categorias ON productos.categoria_id=categorias.id
-        WHERE productos.nombre_producto LIKE '%$search%' OR unidades.nombre_unidad LIKE '%$search' OR categorias.nombre_categoria LIKE '%$search'");
-            $resultado = $sql->fetchAll();
-            $json = array();
-            foreach ($resultado as $row) {
-                $json[] = array(
-                    'producto_id' => $row['producto_id'],
-                    'codigo_producto' => $row['codigo_producto'],
-                    'nombre_producto' => $row['nombre_producto'],
-                    'cantidad' => $row['cantidad'],
-                    'precio_compra' => number_format($row['precio_compra']),
-                    'porcentaje' => $row['porcentaje'],
-                    'precio_porcentaje' => number_format($row['precio_porcentaje']),
-                    'precio' => number_format($row['precio']),
-                    'estado_producto' => $row['estado_producto'],
-                    'foto_producto' => $row['foto_producto'],
-                    'unidad_id' => $row['unidad_id'],
-                    'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
-                    'fecha_creacion' => $row['fecha_creacion'],
-                );
-            }
-            $jsonstring = json_encode($json);
-            echo $jsonstring;
-        } else {
-            $sql = $this->conexion->ejecutar_consulta_simple("SELECT *, productos.id AS producto_id
-            FROM productos  INNER JOIN unidades ON productos.unidad_id=unidades.id
-            INNER JOIN categorias ON productos.categoria_id=categorias.id LIMIT 15");
-            $resultado = $sql->fetchAll();
-            $json = array();
-            foreach ($resultado as $row) {
-                $json[] = array(
-                    'producto_id' => $row['producto_id'],
-                    'codigo_producto' => $row['codigo_producto'],
-                    'nombre_producto' => $row['nombre_producto'],
-                    'cantidad' => $row['cantidad'],
-                    'precio_compra' => number_format($row['precio_compra']),
-                    'porcentaje' => $row['porcentaje'],
-                    'precio_porcentaje' => number_format($row['precio_porcentaje']),
-                    'precio' => number_format($row['precio']),
-                    'estado_producto' => $row['estado_producto'],
-                    'foto_producto' => $row['foto_producto'],
-                    'unidad_id' => $row['unidad_id'],
-                    'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
-                    'fecha_creacion' => $row['fecha_creacion'],
-                );
-            }
-            $jsonstring = json_encode($json);
-            echo $jsonstring;
-        }
-
-
-        /* $listar = $this->modelo->listproductos();
+        $listar = $this->modelo->listproductos();
         $resultado = $listar->fetchAll();
         $json = array();
         foreach ($resultado as $row) {
@@ -242,14 +184,14 @@ class ProductosControllers
                 'precio_porcentaje' => number_format($row['precio_porcentaje']),
                 'precio' => number_format($row['precio']),
                 'estado_producto' => $row['estado_producto'],
-                'foto_producto' => $row['foto_producto'],
+                'foto_producto' => utf8_encode($row['foto_producto']),
                 'unidad_id' => $row['unidad_id'],
                 'nombre_unidad' => $row['nombre_unidad'],
                 'fecha_creacion' => $row['fecha_creacion'],
             );
         }
         $jsonstring = json_encode($json);
-        echo $jsonstring; */
+        echo $jsonstring;
     }
 
     public function generar_codigo()

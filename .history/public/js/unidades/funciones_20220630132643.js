@@ -96,7 +96,7 @@ export function requests() {
                         d.getElementById("unidad").value = "nombre_unidad";
                         d.getElementById("descripcion_unidad").value = "descripcion_unidad";
                     } else {
-                        /* if (estado_unidad == 1) {
+                        if (estado_unidad == 1) {
                             d.getElementById('btn-activ').style.display = 'none';
                             d.getElementById('btn-bloq').style.display = 'block';
                             d.getElementById('btn-delete').style.display = 'block';
@@ -104,7 +104,7 @@ export function requests() {
                             d.getElementById('btn-activ').style.display = 'block';
                             d.getElementById('btn-bloq').style.display = 'none';
                             d.getElementById('btn-delete').style.display = 'block';
-                        } */
+                        }
                         d.getElementById('id').value = id;
                         d.getElementById("unidad").value = nombre_unidad;
                         d.getElementById("descripcion_unidad").value = descripcion_unidad;
@@ -284,9 +284,6 @@ export async function listar_unidad(buscar) {
             document.getElementById("movimiento")
                 .content.querySelector("#form-bloq").style.display = 'none';
         }
-        document
-            .getElementById("movimiento")
-            .content.querySelector(".estado").innerHTML = estado;
         let clone = document.importNode(
             document.getElementById("movimiento").content,
             true

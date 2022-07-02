@@ -12,57 +12,66 @@ const Toast = Swal.mixin({
         toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
 });
-const myModal = new bootstrap.Modal(document.getElementById('Modal-Edit-Unidades'));
+const myModal = new bootstrap.Modal(document.getElementById('Modal-Edit-Productos'));
 
 export function requests() {
     d.addEventListener("submit", async (e) => {
         e.preventDefault();
-
-        if (e.target.matches('#form-save')) {
+        if (e.target.matches('#formulario')) {
             if (d.getElementById('id').value == "") {
-                let data = await ajax(URL.API_AGREGAR_UNIDAD, {
+                let data = await ajax(URL.API_AGREGAR_PRODUCTOS, {
                     method: "POST",
-                    body: appendForm({
-                        form: d.createElement("form"),
-                        unidad: d.getElementById('unidad').value,
-                        descripcion_unidad: d.getElementById('descripcion_unidad').value,
-                    }),
+                    body: new FormData(e.target),
+                    /*  body: appendForm({
+                         form: d.createElement("form"),
+                         codigo: d.getElementById("codigo").value,
+                         categoria: d.getElementById("categoria").value,
+                         unidad: d.getElementById("unidad").value,
+                         descripcion: d.getElementById("descripcion").value,
+                         nuevoPrecioCompra: d.getElementById("nuevoPrecioCompra").value,
+                         nuevoPrecioPorcentaje: d.getElementById("nuevoPrecioPorcentaje").value,
+                         cantidad: d.getElementById("cantidad").value,
+                         porcentaje: d.getElementById("porcentaje").value,
+                         preciototal: d.getElementById("preciototal").value,
+                         file: d.getElementById("file").value,
+                     }), */
                 });
                 if (data == 1) {
                     Toast.fire({
                         icon: 'success',
-                        title: 'Unidad Registrada Exitosamente'
+                        title: 'Producto Registrado Exitosamente'
                     });
-                    listar_unidad("");
+                    listar_productos("");
                     d.getElementById('buscar').value = '';
                     myModal.hide();
                 } else if (data == 2) {
                     Toast.fire({
                         icon: 'warning',
-                        title: 'La Unidad ya se encuentra registrada en el sitema.'
+                        title: 'El producto ya se encuentra registrado en el sitema.'
                     });
                 } else {
                     Toast.fire({
                         icon: 'error',
-                        title: 'Unidad no Agregada'
+                        title: 'Producto no Agregado'
                     });
                 }
             } else {
-                let data = await ajax(URL.API_ACTUALIZAR_UNIDAD, {
+                let data = await ajax(URL.API_ACTUALIZAR_PRODUCTOS, {
                     method: "POST",
-                    body: appendForm({
+                    body: new FormData(e.target),
+                    /* body: appendForm({
                         form: d.createElement("form"),
                         id: d.getElementById('id').value,
                         unidad: d.getElementById('unidad').value,
                         descripcion_unidad: d.getElementById('descripcion_unidad').value,
-                    }),
+                    }), */
                 });
                 if (data == 1) {
                     Toast.fire({
                         icon: 'success',
-                        title: 'Unidad Actualizada Exitosamente'
+                        title: 'Producto Actualizado Exitosamente'
                     });
-                    listar_unidad("");
+                    listar_productos("");
                     d.getElementById('buscar').value = '';
                     myModal.hide();
                 } else {
@@ -74,40 +83,65 @@ export function requests() {
             }
         }
 
+        if (e.target.matches('#form-opne-modal')) {
+            myModal.show();
+            d.getElementById('id').value = "";
+            d.getElementById("codigo").value = codigo_producto();
+            d.getElementById("categoria").value = "";
+            d.getElementById("unidad").value = "";
+            d.getElementById("descripcion").value = "";
+            d.getElementById("nuevoPrecioCompra").value = "";
+            d.getElementById("nuevoPrecioPorcentaje").value = "";
+            d.getElementById("cantidad").value = "";
+            d.getElementById("porcentaje").value = 40;
+            d.getElementById("preciototal").value = "";
+        }
+
         //Formulario apra editar datos personales
         if (e.target.matches('.form-edit')) {
             myModal.show();
             let padre = e.target.parentElement.parentElement;
-            let id_unidad = padre.querySelector(".id_unidad").value;
-            console.log(id_unidad);
-            if (id_unidad != 0) {
-                let data = await ajax(URL.API_PREPARAR_UNIDAD, {
+            let id_producto = padre.querySelector(".id_producto").value;
+            console.log(id_producto);
+            if (id_producto != 0) {
+                let data = await ajax(URL.API_PREPARAR_PRODUCTOS, {
                     method: "POST",
                     //body: new FormData(e.target),
                     body: appendForm({
                         form: d.createElement("form"),
-                        dato: id_unidad,
+                        dato: id_producto,
                     }),
                 });
+                let codigo = "";
                 data.forEach((value) => {
-                    let { id, nombre_unidad, descripcion_unidad, estado_unidad } = value;
+                    let { producto_id,
+                        codigo_producto,
+                        categoria_id,
+                        unidad_id,
+                        nombre_producto,
+                        precio_compra,
+                        precio_porcentaje,
+                        cantidad,
+                        porcentaje,
+                        precio,
+                        estado_producto
+                    } = value;
+                    codigo = codigo_producto.replace(/['"]+/g, '');
                     if (!data.length) {
                         d.getElementById("identificacion").value = "000";
                         d.getElementById("unidad").value = "nombre_unidad";
                         d.getElementById("descripcion_unidad").value = "descripcion_unidad";
                     } else {
-                        /* if (estado_unidad == 1) {
-                            d.getElementById('btn-activ').style.display = 'none';
-                            d.getElementById('btn-bloq').style.display = 'block';
-                            d.getElementById('btn-delete').style.display = 'block';
-                        } else {
-                            d.getElementById('btn-activ').style.display = 'block';
-                            d.getElementById('btn-bloq').style.display = 'none';
-                            d.getElementById('btn-delete').style.display = 'block';
-                        } */
-                        d.getElementById('id').value = id;
-                        d.getElementById("unidad").value = nombre_unidad;
-                        d.getElementById("descripcion_unidad").value = descripcion_unidad;
+                        d.getElementById('id').value = producto_id;
+                        d.getElementById("codigo").value = codigo;
+                        d.getElementById("categoria").value = categoria_id;
+                        d.getElementById("unidad").value = unidad_id;
+                        d.getElementById("descripcion").value = nombre_producto;
+                        d.getElementById("nuevoPrecioCompra").value = precio_compra;
+                        d.getElementById("nuevoPrecioPorcentaje").value = precio_porcentaje;
+                        d.getElementById("cantidad").value = cantidad;
+                        d.getElementById("porcentaje").value = porcentaje;
+                        d.getElementById("preciototal").value = precio;
                     }
                 });
             } else {
@@ -116,15 +150,6 @@ export function requests() {
                     title: 'Error de Operación'
                 });
             }
-        }
-
-        if (e.target.matches('#form-opne-modal')) {
-            myModal.show();
-            d.getElementById('btn-bloq').style.display = 'none';
-            d.getElementById('btn-delete').style.display = 'none';
-            d.getElementById('id').value = '';
-            d.getElementById('unidad').value = '';
-            d.getElementById('descripcion_unidad').value = '';
         }
 
         if (e.target.matches('#form-bloq')) {
@@ -139,19 +164,19 @@ export function requests() {
                 cancelButtonText: "NO",
             }).then(async (result) => {
                 if (result.value) {
-                    let data = await ajax(URL.API_BLOQUEAR_UNIDAD, {
+                    let data = await ajax(URL.API_BLOQUEAR_PRODUCTOS, {
                         method: "POST",
                         body: appendForm({
                             form: d.createElement("form"),
-                            id: d.getElementById('id').value,
+                            id: d.getElementById('id_edit').value,
                         }),
                     });
                     if (data == 1) {
                         Toast.fire({
                             icon: 'success',
-                            title: 'Unidad Bloqueada Exitosamente'
+                            title: 'Producto Bloqueada Exitosamente'
                         });
-                        listar_unidad("");
+                        listar_productos("");
                         d.getElementById('buscar').value = '';
                         myModal.hide();
                     } else {
@@ -164,7 +189,7 @@ export function requests() {
             });
         }
 
-        if (e.target.matches('#form-activ')) {
+        if (e.target.matches('#form-active')) {
             Swal.fire({
                 title: "Quieres Activarlo?",
                 text: "Podrás revertirlo despues!",
@@ -176,19 +201,19 @@ export function requests() {
                 cancelButtonText: "NO",
             }).then(async (result) => {
                 if (result.value) {
-                    let data = await ajax(URL.API_ACTIVAR_UNIDAD, {
+                    let data = await ajax(URL.API_ACTIVAR_PRODUCTOS, {
                         method: "POST",
                         body: appendForm({
                             form: d.createElement("form"),
-                            id: d.getElementById('id').value,
+                            id: d.getElementById('id_active').value,
                         }),
                     });
                     if (data == 1) {
                         Toast.fire({
                             icon: 'success',
-                            title: 'Unidad Activa Exitosamente'
+                            title: 'Producto Activo Exitosamente'
                         });
-                        listar_unidad("");
+                        listar_productos("");
                         d.getElementById('buscar').value = '';
                         myModal.hide();
                     } else {
@@ -201,7 +226,7 @@ export function requests() {
             });
         }
 
-        if (e.target.matches('#form-delete')) {
+        if (e.target.matches('.form-delete')) {
             Swal.fire({
                 title: "Quieres Eliminarlo?",
                 text: "No Podrás revertirlo despues!",
@@ -213,19 +238,19 @@ export function requests() {
                 cancelButtonText: "NO",
             }).then(async (result) => {
                 if (result.value) {
-                    let data = await ajax(URL.API_ELIMINAR_UNIDAD, {
+                    let data = await ajax(URL.API_ELIMINAR_PRODUCTOS, {
                         method: "POST",
                         body: appendForm({
                             form: d.createElement("form"),
-                            id: d.getElementById('id').value,
+                            id: d.getElementById('id_delete').value,
                         }),
                     });
                     if (data == 1) {
                         Toast.fire({
                             icon: 'success',
-                            title: 'Unidad Eliminada Exitosamente'
+                            title: 'Producto Eliminado Exitosamente'
                         });
-                        listar_unidad("");
+                        listar_productos("");
                         d.getElementById('buscar').value = '';
                         myModal.hide();
                     } else {
@@ -241,9 +266,8 @@ export function requests() {
     });
 }
 
-
-export async function listar_unidad(buscar) {
-    let data = await ajax(URL.API_LISTAR_UNIDAD, {
+export async function listar_productos(buscar) {
+    let data = await ajax(URL.API_LISTAR_PRODUCTOS, {
         method: "POST",
         body: appendForm({
             form: d.createElement("form"),
@@ -252,26 +276,42 @@ export async function listar_unidad(buscar) {
     });
     let estado = "";
     let fragment = document.createDocumentFragment();
-    let tbody = document.getElementById("lista-general-unidades");
+    let tbody = document.getElementById("lista-general-productos");
     tbody.innerHTML = "";
+    let image = "";
     data.forEach((value) => {
         let {
+            nombre_producto,
+            producto_id,
             nombre_unidad,
-            descripcion_unidad,
-            id,
-            estado_unidad
+            estado_producto,
+            precio,
+            foto_producto
         } = value;
+        document
+            .getElementById("movimiento")
+            .content.querySelector(".nombre-producto").textContent = nombre_producto;
         document
             .getElementById("movimiento")
             .content.querySelector(".nombre-unidad").textContent = nombre_unidad;
         document
             .getElementById("movimiento")
-            .content.querySelector(".descripcion-unidad").textContent = descripcion_unidad.toLowerCase();
+            .content.querySelector(".id_producto").value = producto_id;
         document
             .getElementById("movimiento")
-            .content.querySelector(".id_unidad").value = id;
+            .content.querySelector("#id_edit").value = producto_id;
+        document
+            .getElementById("movimiento")
+            .content.querySelector("#id_active").value = producto_id;
+        document
+            .getElementById("movimiento")
+            .content.querySelector("#id_delete").value = producto_id;
 
-        if (estado_unidad == 1) {
+        document
+            .getElementById("movimiento")
+            .content.querySelector(".img").innerHTML = '<img src="../../public/img/productos/' + foto_producto + '" alt="Opss..!" width="50px" height="50px">';
+
+        if (estado_producto == 1) {
             estado = '<span class="badge text-success">Activo</span>';
             document.getElementById("movimiento")
                 .content.querySelector("#form-active").style.display = 'none';
@@ -287,6 +327,9 @@ export async function listar_unidad(buscar) {
         document
             .getElementById("movimiento")
             .content.querySelector(".estado").innerHTML = estado;
+        document
+            .getElementById("movimiento")
+            .content.querySelector(".precio").textContent = "$" + precio;
         let clone = document.importNode(
             document.getElementById("movimiento").content,
             true
@@ -294,4 +337,45 @@ export async function listar_unidad(buscar) {
         fragment.appendChild(clone);
     });
     tbody.appendChild(fragment);
+}
+
+//Listar Unidades
+export async function cargar_unidades() {
+    let RUTAS = d.getElementById("unidad");
+    let data = await ajax(URL.API_LISTAR_PRODUCTOS_UNIDADES, {
+        method: "POST",
+    });
+    data.forEach((value) => {
+        let { id, nombre_unidad } = value;
+        let opt = document.createElement('option');
+        opt.value = id;
+        opt.textContent = nombre_unidad;
+        RUTAS.appendChild(opt);
+    });
+}
+
+//Listar Categorias
+export async function cargar_categorias() {
+    let RUTAS = d.getElementById("categoria");
+    let data = await ajax(URL.API_LISTAR_PRODUCTOS_CATEGORIAS, {
+        method: "POST",
+    });
+    data.forEach((value) => {
+        let { id, nombre_categoria } = value;
+        let opt = document.createElement('option');
+        opt.value = id;
+        opt.textContent = nombre_categoria;
+        RUTAS.appendChild(opt);
+    });
+}
+
+export async function codigo_producto() {
+    let data = await ajax(URL.API_GENERAR_CODIGO_PRODUCTOS, {
+        method: "POST",
+    });
+    if (data.length) {
+        document.getElementById("codigo").value = "000";
+    } else {
+        document.getElementById("codigo").value = data
+    }
 }

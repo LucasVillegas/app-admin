@@ -193,7 +193,6 @@ class ProductosControllers
                     'foto_producto' => $row['foto_producto'],
                     'unidad_id' => $row['unidad_id'],
                     'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
                     'fecha_creacion' => $row['fecha_creacion'],
                 );
             }
@@ -219,7 +218,6 @@ class ProductosControllers
                     'foto_producto' => $row['foto_producto'],
                     'unidad_id' => $row['unidad_id'],
                     'nombre_unidad' => $row['nombre_unidad'],
-                    'nombre_categoria' => $row['nombre_categoria'],
                     'fecha_creacion' => $row['fecha_creacion'],
                 );
             }
