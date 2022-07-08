@@ -20,7 +20,7 @@ export function requests() {
                     body: appendForm({
                         form: d.createElement("form"),
                         usuario: padre.querySelector("#username").value,
-                        clave: padre.querySelector("#password").value,
+                        clave: padre.querySelector("#clave").value,
                     }),
                 });
                 if (data == 1) {

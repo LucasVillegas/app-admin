@@ -176,7 +176,7 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="<?php echo SERVERIMG; ?>messages-1.png" alt="Profile" class="rounded-circle">
+                    <img src="<?php echo SERVERIMG; ?>caja.png" alt="Profile" class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo  $_SESSION['nombre_dis']; ?></span>
                 </a>
                 <!-- End Profile Iamge Icon -->
@@ -193,7 +193,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                             <i class="bi bi-person"></i>
-                            <span>Mi Perfil</span>
+                            <span>My Profile</span>
                         </a>
                     </li>
                     <li>

@@ -70,7 +70,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="password" class="form-label">Contrase&ntilde;a</label>
+                                        <label for="yourPassword" class="form-label">Contrase&ntilde;a</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -83,8 +83,8 @@
                                                     <path d="M8 11v-4a4 4 0 0 1 8 0v4"></path>
                                                 </svg>
                                             </span>
-                                            <input type="password" name="password" class="form-control" id="password"
-                                                required>
+                                            <input type="password" name="password" class="form-control"
+                                                id="yourPassword" required>
                                             <div class="invalid-feedback">¡Por favor, introduzca su contraseña!</div>
                                         </div>
 

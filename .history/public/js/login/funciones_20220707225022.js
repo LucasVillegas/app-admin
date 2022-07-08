@@ -3,7 +3,7 @@ import URL from "../helpers/url.js";
 const d = document;
 
 export function requests() {
-    d.addEventListener("submit", async (e) => {
+    d.addEventListener("click", async (e) => {
         e.preventDefault();
         //debugger;
         if (e.target.matches('#form-login')) {
@@ -19,8 +19,8 @@ export function requests() {
                     method: "POST",
                     body: appendForm({
                         form: d.createElement("form"),
-                        usuario: padre.querySelector("#username").value,
-                        clave: padre.querySelector("#password").value,
+                        usuario: padre.querySelector("usuario").value,
+                        clave: padre.querySelector("clave").value,
                     }),
                 });
                 if (data == 1) {
@@ -42,8 +42,8 @@ export function requests() {
                         timer: 1500,
                     });
                     //$("#error").show();
-                    padre.querySelector("#usuario").value = "";
-                    padre.querySelector("#clave").value = "";
+                    d.getElementById("usuario").value = "";
+                    d.getElementById("clave").value = "";
                 }
             }
         }
@@ -52,7 +52,7 @@ export function requests() {
 
 export function validar() {
     var cont = 0;
-    var yourUsername = d.getElementById("username").value;
+    var yourUsername = d.getElementById("yourUsername").value;
     if (yourUsername != "" && yourUsername.length > 4) {
         //d.getElementById("yourUsername").removeClass("is-invalid");
         cont++;
@@ -66,7 +66,7 @@ export function validar() {
         }, 1500);
     }
 
-    var yourPassword = d.getElementById("password").value;
+    var yourPassword = d.getElementById("yourPassword").value;
     if (yourPassword != "" && yourPassword.length > 4) {
         //d.getElementById("#yourPassword").removeClass("is-invalid");
         cont++;

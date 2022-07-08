@@ -50,7 +50,7 @@
 
                                 <form class="row g-3 needs-validation" novalidate id="form-login">
                                     <div class="col-12">
-                                        <label for="username" class="form-label">Usuario</label>
+                                        <label for="yourUsername" class="form-label">Usuario</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@
                                                     <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                                                 </svg>
                                             </span>
-                                            <input type="text" name="username" class="form-control" id="username"
+                                            <input type="text" name="username" class="form-control" id="yourUsername"
                                                 required>
                                             <div class="invalid-feedback">Por favor, introduzca su nombre de usuario.
                                             </div>
@@ -70,7 +70,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="password" class="form-label">Contrase&ntilde;a</label>
+                                        <label for="yourPassword" class="form-label">Contrase&ntilde;a</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -83,8 +83,8 @@
                                                     <path d="M8 11v-4a4 4 0 0 1 8 0v4"></path>
                                                 </svg>
                                             </span>
-                                            <input type="password" name="password" class="form-control" id="password"
-                                                required>
+                                            <input type="password" name="password" class="form-control"
+                                                id="yourPassword" required>
                                             <div class="invalid-feedback">¡Por favor, introduzca su contraseña!</div>
                                         </div>
 

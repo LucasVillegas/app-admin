@@ -20,7 +20,7 @@ export function requests() {
                     body: appendForm({
                         form: d.createElement("form"),
                         usuario: padre.querySelector("#username").value,
-                        clave: padre.querySelector("#password").value,
+                        clave: padre.querySelector("#clave").value,
                     }),
                 });
                 if (data == 1) {
@@ -52,7 +52,7 @@ export function requests() {
 
 export function validar() {
     var cont = 0;
-    var yourUsername = d.getElementById("username").value;
+    var yourUsername = d.getElementById("yourUsername").value;
     if (yourUsername != "" && yourUsername.length > 4) {
         //d.getElementById("yourUsername").removeClass("is-invalid");
         cont++;
@@ -66,7 +66,7 @@ export function validar() {
         }, 1500);
     }
 
-    var yourPassword = d.getElementById("password").value;
+    var yourPassword = d.getElementById("yourPassword").value;
     if (yourPassword != "" && yourPassword.length > 4) {
         //d.getElementById("#yourPassword").removeClass("is-invalid");
         cont++;

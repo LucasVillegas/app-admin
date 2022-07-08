@@ -3,56 +3,60 @@ import URL from "../helpers/url.js";
 const d = document;
 
 export function requests() {
-    d.addEventListener("submit", async (e) => {
+    d.addEventListener("click", async (e) => {
         e.preventDefault();
         //debugger;
-        if (e.target.matches('#form-login')) {
-            let padre = e.target.parentElement.parentElement;
-            //let id_dias_ruta = padre.querySelector(".id_dias_ruta").value;
+        if (e.target.matches('.btn-login') || e.target.matches('.btn-login *')) {
             if (validar()) {
-                /* const datos = {
+                const datos = {
                     usuario: d.getElementById("usuario").value,
                     clave: d.getElementById("clave").value,
-                }; */
+                };
 
                 let data = await ajax(URL.API_INICIAR_SESION, {
                     method: "POST",
                     body: appendForm({
                         form: d.createElement("form"),
-                        usuario: padre.querySelector("#username").value,
-                        clave: padre.querySelector("#password").value,
+                        dato: id_dias_ruta,
                     }),
                 });
-                if (data == 1) {
-                    window.location = "home";
-                }
-                if (data != 1 && data == 2) {
-                    window.location = "oficina";
-                }
-                if (data != 2 && data == 3) {
-                    window.location = "venta";
-                }
-                if (data != 1 && data == 0) {
-                    Swal.fire({
-                        position: "center",
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Error su usuario o contraseña incorrecta o su usuario esta deshabilitado!",
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                    //$("#error").show();
-                    padre.querySelector("#usuario").value = "";
-                    padre.querySelector("#clave").value = "";
-                }
+                /*  $.post(
+                     "app/Controllers/LoginController.php?op=iniciar_secion",
+                     datos,
+                     function (response) {
+                         if (response == 1) {
+                             window.location = "home";
+                         }
+                         if (response != 1 && response == 2) {
+                             window.location = "oficina";
+                         }
+                         if (response != 2 && response == 3) {
+                             window.location = "venta";
+                         }
+                         if (response != 1 && response == 0) {
+                             Swal.fire({
+                                 position: "center",
+                                 icon: "error",
+                                 title: "Oops...",
+                                 text: "Error su usuario o contraseña incorrecta o su usuario esta deshabilitado!",
+                                 showConfirmButton: false,
+                                 timer: 1500,
+                             });
+                             $("#error").show();
+                             $("#usuario").val("");
+                             $("#clave").val("");
+                         }
+                     }
+                 ); */
             }
         }
+
     });
 }
 
 export function validar() {
     var cont = 0;
-    var yourUsername = d.getElementById("username").value;
+    var yourUsername = d.getElementById("yourUsername").value;
     if (yourUsername != "" && yourUsername.length > 4) {
         //d.getElementById("yourUsername").removeClass("is-invalid");
         cont++;
@@ -66,7 +70,7 @@ export function validar() {
         }, 1500);
     }
 
-    var yourPassword = d.getElementById("password").value;
+    var yourPassword = d.getElementById("yourPassword").value;
     if (yourPassword != "" && yourPassword.length > 4) {
         //d.getElementById("#yourPassword").removeClass("is-invalid");
         cont++;

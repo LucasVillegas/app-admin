@@ -37,7 +37,7 @@ class LoginController
                 }
 
                 if ($sql->rowCount() == 1) {
-                    session_start(['name' => 'DISTRI']); // nombre a la sesion
+                    //session_start(['name' => 'DISTRI']); // nombre a la sesion
                     $usuarioDatos = $sql->fetch();
 
                     if ($fila['tipo_usuario'] == "Administrador") {

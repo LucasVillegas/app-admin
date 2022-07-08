@@ -19,11 +19,11 @@ class LoginController
     {
         $usuario = $this->helpers->limpiar_cadena($_POST['usuario']);
         $clave = $this->helpers->limpiar_cadena($_POST['clave']);
-        $clave1 = $this->helpers->encryption($clave); // para leer la contraseña
+        $clave = $this->helpers->encryption($clave); // para leer la contraseña
 
         $datoslogin = [
             "Usuario" => $usuario,
-            "Clave" => $clave1
+            "Clave" => $clave
         ];
         $datosusuario = $this->modelo->iniciar_sesion_modelo($datoslogin);
 
@@ -65,7 +65,7 @@ class LoginController
                 echo 0;
             }
         } else {
-            echo 0;
+            echo "hola";
         }
     }
 }

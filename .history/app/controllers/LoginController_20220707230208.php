@@ -65,7 +65,7 @@ class LoginController
                 echo 0;
             }
         } else {
-            echo 0;
+            echo "hola";
         }
     }
 }
