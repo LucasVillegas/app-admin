@@ -49,22 +49,29 @@ export function validar() {
     var cont = 0;
     var yourUsername = d.getElementById("username").value;
     if (yourUsername != "" && yourUsername.length > 4) {
+        //d.getElementById("yourUsername").removeClass("is-invalid");
         cont++;
     } else {
+        // d.getElementById("yourUsername").addClass("is-invalid");
+
         d.getElementById("alertas-usuario").style.display = "block";
         setTimeout(function () {
+            // d.getElementById("alertas-usuario").fadeOut(1500);
             d.getElementById("alertas-usuario").style.display = "none";
         }, 1500);
     }
 
     var yourPassword = d.getElementById("password").value;
     if (yourPassword != "" && yourPassword.length > 4) {
+        //d.getElementById("#yourPassword").removeClass("is-invalid");
         cont++;
     } else {
         d.getElementById("alertas-clave").style.display = "block";
         setTimeout(function () {
+            // d.getElementById("alertas-usuario").fadeOut(1500);
             d.getElementById("alertas-clave").style.display = "none";
         }, 1500);
+        // d.getElementById("#yourPassword").addClass("is-invalid");
     }
 
     if (cont == 2) {

@@ -11,12 +11,13 @@
 
 <section class="section dashboard">
     <div class="row">
+
         <!-- Left side columns -->
         <div class="col-lg-8">
             <div class="row">
 
                 <!-- Sales Card -->
-                <div class="col-xxl-4 col-md-6">
+                <div class="col-xxl-2 col-md-2">
                     <div class="card info-card sales-card">
 
                         <!--  <div class="filter">
@@ -33,7 +34,7 @@
                         </div> -->
 
                         <div class="card-body">
-                            <h5 class="card-title">Ventas <span>| Totales</span></h5>
+                            <h5 class="card-title">Ventas</h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">

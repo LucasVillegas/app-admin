@@ -11,6 +11,7 @@
 
 <section class="section dashboard">
     <div class="row">
+
         <!-- Left side columns -->
         <div class="col-lg-8">
             <div class="row">
@@ -48,8 +49,7 @@
                         </div>
 
                     </div>
-                </div>
-                <!-- End Sales Card -->
+                </div><!-- End Sales Card -->
 
                 <!-- Revenue Card -->
                 <div class="col-xxl-4 col-md-6">

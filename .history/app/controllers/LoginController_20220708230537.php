@@ -32,7 +32,9 @@ class LoginController
             if ($datosusuario->rowCount() >= 1) {
                 if ($fila['tipo_usuario'] == "Administrador") {
                     $sql = $this->modelo->ejecutar_consulta_simple("SELECT * FROM usuarios INNER JOIN personas ON usuarios.persona_id= personas.id WHERE usuarios.id='" . $fila['id'] . "' AND usuarios.tipo_usuario='Administrador'");
-                }
+                }/*  elseif ($fila['tipo_usuario'] == "Vendedor") {
+                    $sql = $this->modelo->ejecutar_consulta_simple("SELECT * FROM usuarios INNER JOIN personas ON usuarios.persona_id= personas.id WHERE usuarios.id='" . $fila['id'] . "' AND tipo_usuario='Vendedor'");
+                } */
 
                 if ($sql->rowCount() == 1) {
                     //session_start(['name' => 'DISTRI']); // nombre a la sesion

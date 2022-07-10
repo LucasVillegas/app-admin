@@ -11,12 +11,13 @@
 
 <section class="section dashboard">
     <div class="row">
+
         <!-- Left side columns -->
         <div class="col-lg-8">
             <div class="row">
 
                 <!-- Sales Card -->
-                <div class="col-xxl-4 col-md-6">
+                <div class="col-xxl-2 col-md-1">
                     <div class="card info-card sales-card">
 
                         <!--  <div class="filter">

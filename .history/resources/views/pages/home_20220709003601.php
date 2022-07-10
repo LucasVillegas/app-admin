@@ -11,6 +11,7 @@
 
 <section class="section dashboard">
     <div class="row">
+
         <!-- Left side columns -->
         <div class="col-lg-8">
             <div class="row">
@@ -48,8 +49,7 @@
                         </div>
 
                     </div>
-                </div>
-                <!-- End Sales Card -->
+                </div><!-- End Sales Card -->
 
                 <!-- Revenue Card -->
                 <div class="col-xxl-4 col-md-6">
@@ -77,8 +77,8 @@
                                 </div>
                                 <div class="ps-3">
                                     <h6>$3,264</h6>
-                                    <!-- <span class="text-success small pt-1 fw-bold">8%</span> <span
-                                        class="text-muted small pt-2 ps-1">increase</span> -->
+                                    <span class="text-success small pt-1 fw-bold">8%</span> <span
+                                        class="text-muted small pt-2 ps-1">increase</span>
 
                                 </div>
                             </div>

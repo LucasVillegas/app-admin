@@ -32,10 +32,12 @@ class LoginController
             if ($datosusuario->rowCount() >= 1) {
                 if ($fila['tipo_usuario'] == "Administrador") {
                     $sql = $this->modelo->ejecutar_consulta_simple("SELECT * FROM usuarios INNER JOIN personas ON usuarios.persona_id= personas.id WHERE usuarios.id='" . $fila['id'] . "' AND usuarios.tipo_usuario='Administrador'");
-                }
+                }/*  elseif ($fila['tipo_usuario'] == "Vendedor") {
+                    $sql = $this->modelo->ejecutar_consulta_simple("SELECT * FROM usuarios INNER JOIN personas ON usuarios.persona_id= personas.id WHERE usuarios.id='" . $fila['id'] . "' AND tipo_usuario='Vendedor'");
+                } */
 
                 if ($sql->rowCount() == 1) {
-                    //session_start(['name' => 'DISTRI']); // nombre a la sesion
+                    session_start(['name' => 'DISTRI']); // nombre a la sesion
                     $usuarioDatos = $sql->fetch();
 
                     if ($fila['tipo_usuario'] == "Administrador") {
@@ -44,7 +46,13 @@ class LoginController
                         $_SESSION['apellido_dis'] = $usuarioDatos['apellido'];
                         $_SESSION['telefono_dis'] = $usuarioDatos['telefono'];
                         $_SESSION['estado_persona_dis'] = $usuarioDatos['estado_persona'];
-                    }
+                    } /* elseif ($fila['tipo_usuario'] == "Vendedor") {
+                        $_SESSION['identificacion_dis'] = $usuarioDatos['identificacion'];
+                        $_SESSION['nombre_dis'] = $usuarioDatos['nombre'];
+                        $_SESSION['apellido_dis'] = $usuarioDatos['apellido'];
+                        $_SESSION['telefono_dis'] = $usuarioDatos['telefono'];
+                        $_SESSION['estado_persona_dis'] = $usuarioDatos['estado_persona'];
+                    } */
 
                     $_SESSION['usuario_dis'] = $fila['usuario'];
                     $_SESSION['idusuario_dis'] = $fila['id'];
@@ -55,6 +63,8 @@ class LoginController
 
                     if ($fila['tipo_usuario'] == "Administrador") {
                         echo 1;
+                    } elseif ($fila['tipo_usuario'] == "Vendedor") {
+                        echo 2;
                     }
                 } else {
                     echo 0;
