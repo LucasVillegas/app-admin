@@ -29,12 +29,16 @@
 
 <template id="movimiento">
     <div class="row">
-        <div class="col-10">
+        <div class="col-2">
+            <!--  <img alt="Opss..!" width="50px" height="50px" class="img"> -->
+            <div class="img"></div>
+        </div>
+        <div class="col-9">
             <h6 class="nombre-categoria" style="font-size:13px;">nombre_categoria</h6>
             <h6 class="estado" style="margin-top:-8px;">estado</h6>
         </div>
 
-        <div class="col-2">
+        <div class="col-1">
             <div class="d-flex justify-content-end">
                 <div class="btn-group">
                     <button class="btn btn-white btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"

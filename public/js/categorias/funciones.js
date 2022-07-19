@@ -22,10 +22,11 @@ export function requests() {
             if (d.getElementById('id').value == "") {
                 let data = await ajax(URL.API_AGREGAR_CATEGORIA, {
                     method: "POST",
-                    body: appendForm({
+                    body: new FormData(e.target),
+                    /* body: appendForm({
                         form: d.createElement("form"),
                         categoria: d.getElementById('categoria').value,
-                    }),
+                    }), */
                 });
                 if (data == 1) {
                     Toast.fire({
@@ -49,11 +50,12 @@ export function requests() {
             } else {
                 let data = await ajax(URL.API_ACTUALIZAR_CATEGORIA, {
                     method: "POST",
-                    body: appendForm({
-                        form: d.createElement("form"),
-                        id: d.getElementById('id').value,
-                        categoria: d.getElementById('categoria').value,
-                    }),
+                    body: new FormData(e.target),
+                    /*  body: appendForm({
+                         form: d.createElement("form"),
+                         id: d.getElementById('id').value,
+                         categoria: d.getElementById('categoria').value,
+                     }), */
                 });
                 if (data == 1) {
                     Toast.fire({
@@ -171,7 +173,8 @@ export async function listar_categoria(buscar) {
         let {
             nombre_categoria,
             id,
-            estado_categoria
+            estado_categoria,
+            foto_categoria
         } = value;
         document
             .getElementById("movimiento")
@@ -188,6 +191,9 @@ export async function listar_categoria(buscar) {
         document
             .getElementById("movimiento")
             .content.querySelector(".estado").innerHTML = estado;
+        document
+            .getElementById("movimiento")
+            .content.querySelector(".img").innerHTML = '<img src="../../public/img/categorias/' + foto_categoria + '" alt="" width="50px" height="50px">';
         let clone = document.importNode(
             document.getElementById("movimiento").content,
             true
