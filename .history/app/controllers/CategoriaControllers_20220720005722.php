@@ -14,8 +14,7 @@ class CategoriaControllers
     public function agregar_categoria()
     {
         //Datos tabala Usuarios
-        /*  $ruta_carpeta         = "../../public/img/categorias/"; */
-        $ruta_carpeta         = "C:/laragon/www/fotos-productos/";
+        $ruta_carpeta         = "../../public/img/categorias/";
 
         $r                    = rand(0, 1000);
         $fecha                = date("his");
@@ -23,10 +22,11 @@ class CategoriaControllers
 
         $nombre_archivo       = basename($_FILES['file']['name']);
         if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo)) {
-            /* $ruta_carpeta1         = "C:/laragon/www/app-movil/public/img/categorias/";
+            $ruta_carpeta1         = "C:/laragon/www/app-movil/public/img/categorias/";
             $ruta_guardar_archivo1 = $ruta_carpeta1 . basename($_FILES['file']['name']);
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo1)) {
-            } */
+            /* if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo1)) {
+                        $respuesta++;
+                    } */
             $categoria = $this->helpers->limpiar_cadena($_POST['categoria']);
             $fecha = date("Y-m-d");
             $consulta = $this->conexion->ejecutar_consulta_simple("SELECT nombre_categoria FROM categorias WHERE nombre_categoria='$categoria'");
@@ -36,6 +36,7 @@ class CategoriaControllers
                 $sql = $this->conexion->ejecutar_consulta_simple("INSERT INTO categorias(nombre_categoria,foto_categoria,fecha_categoria,estado_categoria) VALUES('$categoria','$nombre_archivo','$fecha',1)");
                 $respuesta = 0;
                 if ($sql->rowCount() >= 1) {
+
                     $respuesta++;
                 }
                 echo json_encode($respuesta);

@@ -19,7 +19,7 @@ class ProductosControllers
     {
         //Datos tabala Usuarios
         $ruta_carpeta         = "../../public/img/productos/";
-        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/productos/";
+        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/roductos/";
         $r                    = rand(0, 1000);
         $fecha                = date("his");
         $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
@@ -103,7 +103,7 @@ class ProductosControllers
     {
         //Datos tabala Usuarios
         $ruta_carpeta         = "../../public/img/productos/";
-        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/productos/";
+        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/roductos/";
         $r                    = rand(0, 1000);
         $fecha                = date("his");
         $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
@@ -134,8 +134,6 @@ class ProductosControllers
             $guardar = $this->modelo->updateproducto($datos);
             $respuesta = 0;
             if ($guardar->rowCount() >= 1) {
-                if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1)) {
-                }
                 $respuesta++;
             }
             echo json_encode($respuesta);

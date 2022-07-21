@@ -134,8 +134,6 @@ class ProductosControllers
             $guardar = $this->modelo->updateproducto($datos);
             $respuesta = 0;
             if ($guardar->rowCount() >= 1) {
-                if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1)) {
-                }
                 $respuesta++;
             }
             echo json_encode($respuesta);

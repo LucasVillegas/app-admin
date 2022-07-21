@@ -14,8 +14,7 @@ class CategoriaControllers
     public function agregar_categoria()
     {
         //Datos tabala Usuarios
-        /*  $ruta_carpeta         = "../../public/img/categorias/"; */
-        $ruta_carpeta         = "C:/laragon/www/fotos-productos/";
+        $ruta_carpeta         = "../../public/img/categorias/";
 
         $r                    = rand(0, 1000);
         $fecha                = date("his");

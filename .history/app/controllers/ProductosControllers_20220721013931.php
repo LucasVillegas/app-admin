@@ -19,14 +19,14 @@ class ProductosControllers
     {
         //Datos tabala Usuarios
         $ruta_carpeta         = "../../public/img/productos/";
-        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/productos/";
+        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/roductos/";
         $r                    = rand(0, 1000);
         $fecha                = date("his");
         $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
-        $ruta_guardar_archivo_1 = $ruta_carpeta_1 . basename($_FILES['file']['name']);
+        $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
         $nombre_archivo       = basename($_FILES['file']['name']);
 
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo) && move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1)) {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo)) {
             $descripcion = $this->helpers->limpiar_cadena($_POST['descripcion']);
             $unidad = $this->helpers->limpiar_cadena($_POST['unidad']);
             $categoria = $this->helpers->limpiar_cadena($_POST['categoria']);
@@ -103,14 +103,17 @@ class ProductosControllers
     {
         //Datos tabala Usuarios
         $ruta_carpeta         = "../../public/img/productos/";
-        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/productos/";
         $r                    = rand(0, 1000);
         $fecha                = date("his");
         $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
-        $ruta_guardar_archivo_1 = $ruta_carpeta_1 . basename($_FILES['file']['name']);
+        /*      $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+        $logo = "";
+        if ($extension == 'jpg' || $extension == 'jpeg') {
+            $logo =  basename($_FILES['file']['name'] . '.png');
+        } */
         $nombre_archivo       = basename($_FILES['file']['name']);
 
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo) && move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1)) {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo)) {
             $id = $this->helpers->limpiar_cadena($_POST['id']);
             $descripcion = $this->helpers->limpiar_cadena($_POST['descripcion']);
             $unidad = $this->helpers->limpiar_cadena($_POST['unidad']);
@@ -134,8 +137,6 @@ class ProductosControllers
             $guardar = $this->modelo->updateproducto($datos);
             $respuesta = 0;
             if ($guardar->rowCount() >= 1) {
-                if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1)) {
-                }
                 $respuesta++;
             }
             echo json_encode($respuesta);
