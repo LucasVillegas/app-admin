@@ -157,8 +157,7 @@ class CategoriaControllers
             $fila = $foto->fetch();
             $foto_categoria = $fila['foto_categoria'];
             $path = unlink("../../public/img/categorias/" . $foto_categoria);
-            $path1 = unlink("C:/laragon/www/app-movil/public/img/categorias/" . $foto_categoria);
-            if (isset($path) && isset($path1)) {
+            if (isset($path)) {
                 $sql = $this->conexion->ejecutar_consulta_simple("DELETE FROM categorias WHERE id='$id'");
                 $cont = 0;
                 if ($sql->rowCount() >= 1) {

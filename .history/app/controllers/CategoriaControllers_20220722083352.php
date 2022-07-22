@@ -14,15 +14,19 @@ class CategoriaControllers
     public function agregar_categoria()
     {
         //Datos tabala Usuarios
-        $ruta_carpeta         = "../../public/img/categorias/";
-        $ruta_carpeta_1         = "C:/laragon/www/app-movil/public/img/categorias/";
+        /*  $ruta_carpeta         = "../../public/img/categorias/"; */
+        $ruta_carpeta         = "C:/laragon/www/fotos-productos/";
+
         $r                    = rand(0, 1000);
         $fecha                = date("his");
         $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
-        $ruta_guardar_archivo_1 = $ruta_carpeta_1 . basename($_FILES['file']['name']);
+
         $nombre_archivo       = basename($_FILES['file']['name']);
-        copy($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1);
         if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo)) {
+            /* $ruta_carpeta1         = "C:/laragon/www/app-movil/public/img/categorias/";
+            $ruta_guardar_archivo1 = $ruta_carpeta1 . basename($_FILES['file']['name']);
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo1)) {
+            } */
             $categoria = $this->helpers->limpiar_cadena($_POST['categoria']);
             $fecha = date("Y-m-d");
             $consulta = $this->conexion->ejecutar_consulta_simple("SELECT nombre_categoria FROM categorias WHERE nombre_categoria='$categoria'");
@@ -136,7 +140,6 @@ class CategoriaControllers
         $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
         $ruta_guardar_archivo_1 = $ruta_carpeta_1 . basename($_FILES['file']['name']);
         $nombre_archivo       = basename($_FILES['file']['name']);
-        copy($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1);
         if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo)) {
             $id = $this->helpers->limpiar_cadena($_POST['id']);
             $categoria = $this->helpers->limpiar_cadena($_POST['categoria']);
@@ -157,8 +160,7 @@ class CategoriaControllers
             $fila = $foto->fetch();
             $foto_categoria = $fila['foto_categoria'];
             $path = unlink("../../public/img/categorias/" . $foto_categoria);
-            $path1 = unlink("C:/laragon/www/app-movil/public/img/categorias/" . $foto_categoria);
-            if (isset($path) && isset($path1)) {
+            if (isset($path)) {
                 $sql = $this->conexion->ejecutar_consulta_simple("DELETE FROM categorias WHERE id='$id'");
                 $cont = 0;
                 if ($sql->rowCount() >= 1) {

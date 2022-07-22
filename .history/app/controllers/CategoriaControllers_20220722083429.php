@@ -21,7 +21,6 @@ class CategoriaControllers
         $ruta_guardar_archivo = $ruta_carpeta . basename($_FILES['file']['name']);
         $ruta_guardar_archivo_1 = $ruta_carpeta_1 . basename($_FILES['file']['name']);
         $nombre_archivo       = basename($_FILES['file']['name']);
-        copy($_FILES['file']['tmp_name'], $ruta_guardar_archivo_1);
         if (move_uploaded_file($_FILES['file']['tmp_name'], $ruta_guardar_archivo)) {
             $categoria = $this->helpers->limpiar_cadena($_POST['categoria']);
             $fecha = date("Y-m-d");
@@ -157,8 +156,7 @@ class CategoriaControllers
             $fila = $foto->fetch();
             $foto_categoria = $fila['foto_categoria'];
             $path = unlink("../../public/img/categorias/" . $foto_categoria);
-            $path1 = unlink("C:/laragon/www/app-movil/public/img/categorias/" . $foto_categoria);
-            if (isset($path) && isset($path1)) {
+            if (isset($path)) {
                 $sql = $this->conexion->ejecutar_consulta_simple("DELETE FROM categorias WHERE id='$id'");
                 $cont = 0;
                 if ($sql->rowCount() >= 1) {
