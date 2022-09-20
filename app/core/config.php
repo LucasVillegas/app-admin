@@ -21,6 +21,7 @@ const SERVER_SCRIPT_PRODUCTOS = SERVERURL . "public/js/productos/";
 const SERVER_SCRIPT_RUTAS = SERVERURL . "public/js/rutas/";
 const SERVER_SCRIPT_DIAS_RUTAS = SERVERURL . "public/js/dias/";
 const SERVER_SCRIPT_VENTAS = SERVERURL . "public/js/ventas/";
+const SERVER_SCRIPT_HOME = SERVERURL . "public/js/home/";
 
 const COMPANY = "DISTRIBUIDORA J.A";
 

@@ -12,6 +12,7 @@ $categoria = new CategoriaControllers();
 $unidad = new UnidadesControllers();
 $producto = new ProductosControllers();
 $venta = new VentasControllers();
+$home = new HomeControllers();
 
 if (isset($_GET['op'])) {
 
@@ -157,5 +158,16 @@ if (isset($_GET['op'])) {
         $venta->listar_detalle_venta_cabecera();
     } elseif ($_GET['op'] == "Eliminar_Venta") {
         $venta->Elimiar_Factura();
+    }
+
+    /* Funciones del Home */
+    if ($_GET['op'] == "Cantidad_Clientes") {
+        $home->cantidad_de_clientes();
+    } elseif ($_GET['op'] == "Cantidad_Productos") {
+        $home->cantidad_de_productos();
+    } elseif ($_GET['op'] == "Cantidad_Rutas") {
+        $home->cantidad_de_rutas();
+    } elseif ($_GET['op'] == "Cantidad_Vendedores") {
+        $home->cantidad_de_vendedores();
     }
 }

@@ -65,8 +65,12 @@ const
     API_LISTAR_VENTAS_DETALLE = `${location.origin}/app/routes/web.php?op=Listar_Ventas_Anexos`,
     API_DETALLE_VENTAS = `${location.origin}/app/routes/web.php?op=Detalle_Ventas`,
     API_DETALLE_VENTAS_CABECERAS = `${location.origin}/app/routes/web.php?op=Detalle_Ventas_Cabecera`,
-    API_ELIMIAR_VENTA = `${location.origin}/app/routes/web.php?op=Eliminar_Venta`;
-
+    API_ELIMIAR_VENTA = `${location.origin}/app/routes/web.php?op=Eliminar_Venta`,
+    //Rutas Home
+    API_CANTIDAD_CLIENTES = `${location.origin}/app/routes/web.php?op=Cantidad_Clientes`,
+    API_CANTIDAD_PRODUCTOS = `${location.origin}/app/routes/web.php?op=Cantidad_Productos`,
+    API_CANTIDAD_RUTAS = `${location.origin}/app/routes/web.php?op=Cantidad_Rutas`,
+    API_CANTIDAD_VENDEDORES = `${location.origin}/app/routes/web.php?op=Cantidad_Vendedores`;
 export default {
     API_INICIAR_SESION, API_LISTAR_CLIENTES, API_LISTAR_RUTAS, API_CODIGO_CLIENTE,
     API_PREPARAR_CLIENTE, API_AGREGAR_CLIENTES, API_ACTUALIZAR_CLIENTE, API_BLOQUEAR_CLIENTE,
@@ -82,5 +86,6 @@ export default {
     API_PREPARAR_RUTAS, API_BLOQUEAR_RUTAS, API_ACTIVAR_RUTAS, API_ELIMIAR_RUTAS, API_AGREGAR_RUTAS,
     API_ACTUALIZAR_RUTAS, API_LISTAR_DIAS_RUTAS, API_AGREGAR_DIA_RUTA, API_PREPARA_DIA_RUTA,
     API_ACTUALIZAR_DIA_RUTA, API_ELIMINAR_DIA_RUTA, API_LISTAR_VENTAS, API_LISTAR_VENTAS_DETALLE,
-    API_DETALLE_VENTAS, API_DETALLE_VENTAS_CABECERAS, API_ELIMIAR_VENTA
+    API_DETALLE_VENTAS, API_DETALLE_VENTAS_CABECERAS, API_ELIMIAR_VENTA, API_CANTIDAD_CLIENTES,
+    API_CANTIDAD_PRODUCTOS, API_CANTIDAD_RUTAS, API_CANTIDAD_VENDEDORES
 };
